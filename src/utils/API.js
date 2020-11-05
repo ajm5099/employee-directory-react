@@ -1,9 +1,9 @@
-// import axios from "axios";
-// const BASEURL = "https://randomuser.me/api/?results=200&nat=us";
-// const APIKEY = "";
+import axios from "axios";
+const BASEURL = "https://randomuser.me/api/?results=200&nat=us";
+const APIKEY = "";
 
-// export default {
-//   search: function(query) {
-//     return axios.get(BASEURL + query + APIKEY);
-//   }
-// };
+export default {
+  search: function(query) {
+    return axios.get(BASEURL + query + APIKEY);
+  }
+};
