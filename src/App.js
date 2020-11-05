@@ -18,19 +18,17 @@ let employees = [
 ]
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      isOn: false,
-      data: []
-    }
+  state= {
+    isOn: false,
+    data: []
   }
+
   componentDidMount = () => {
     // call the API which will return JSON
     API.search().then(results => {
       console.log(results)
       this.setState({ data: results.data.results })
-      console.log(results.data.results[0].cell)
+      console.log(results.data.results)
     }).catch(err => {
       console.log(err)
     })

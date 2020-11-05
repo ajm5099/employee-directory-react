@@ -1,11 +1,11 @@
 import React from "react";
 
 function Table(props) {
+    
     return <div>
-
         <table class="table">
             <thead>
-                {this.state.data.map(data)}
+                
                 <tr>
                     <th scope="col">Employee #</th>
                     <th scope="col">Image</th>
@@ -18,14 +18,19 @@ function Table(props) {
             <tbody>
 
                 {/* Write the code the populate the table progromatically */}
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{props.data[0].picture}</td>
-                    <td>{props.data[0].name}</td>
-                    <td>{props.data[0].phone}</td>
-                    <td>{props.data[0].email}</td>
-                    <td>{props.data[0].dob}</td>
-                </tr>
+                {props.data.map((data, index)=>{
+                    return(
+                       <tr key={index}>
+                    <th scope="row">{index+1}</th>
+                    <td><img src={data.picture.thumbnail} alt="employee pictures"/></td>
+                    <td>{data.name.first} {data.name.last}</td>
+                    <td>{data.phone}</td>
+                    <td>{data.email}</td>
+                    <td>{data.dob.date}</td>
+                </tr>   
+                    )
+                })}
+                
 
                 {/* <tr>
                     <th scope="row">2</th>
