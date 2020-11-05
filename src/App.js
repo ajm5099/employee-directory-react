@@ -30,6 +30,7 @@ class App extends React.Component {
     API.search().then(results => {
       console.log(results)
       this.setState({ data: results.data.results })
+      console.log(results.data.results[0].cell)
     }).catch(err => {
       console.log(err)
     })

@@ -5,6 +5,7 @@ function Table(props) {
 
         <table class="table">
             <thead>
+                {this.state.data.map(data)}
                 <tr>
                     <th scope="col">Employee #</th>
                     <th scope="col">Image</th>
@@ -19,28 +20,20 @@ function Table(props) {
                 {/* Write the code the populate the table progromatically */}
                 <tr>
                     <th scope="row">1</th>
-                    <td>Image 1</td>
-                    <td>Image 2</td>
-                    <td>Image 3</td>
+                    <td>{props.data[0].picture}</td>
+                    <td>{props.data[0].name}</td>
+                    <td>{props.data[0].phone}</td>
+                    <td>{props.data[0].email}</td>
+                    <td>{props.data[0].dob}</td>
                 </tr>
-                <tr>
+
+                {/* <tr>
                     <th scope="row">2</th>
                     <td>{props.data[0].firstName} {props.data[0].lastName}</td>
                     <td>{props.data[0].phone}</td>
                     <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                </tr> */}
+
             </tbody>
         </table>
     </div>
