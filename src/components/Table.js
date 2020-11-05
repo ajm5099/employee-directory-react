@@ -15,6 +15,8 @@ function Table(props) {
                 </tr>
             </thead>
             <tbody>
+
+                {/* Write the code the populate the table progromatically */}
                 <tr>
                     <th scope="row">1</th>
                     <td>Image 1</td>
