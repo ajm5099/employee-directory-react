@@ -1,5 +1,6 @@
 import axios from "axios";
-const BASEURL = "https://randomuser.me/api/?results=200&nat=us";
+// be sure to change results back to 200
+const BASEURL = "https://randomuser.me/api/?results=25&nat=us";
 const APIKEY = "";
 
 export default {

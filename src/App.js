@@ -34,15 +34,39 @@ class App extends React.Component {
       console.log(err)
     })
   }
+
   onClickHandler = () => {
     this.setState({ isOn: !this.state.isOn })
   }
+
+  
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.filterUpdated(this.state.data);
+  }
+
+  nameFilter = () => {
+    this.state.data.filter(function (data) {
+      return this.state.filter === "n"
+    })
+  }
+
+  filterUpdated = (newData, filterConfiguration) => {
+    this.setState({
+        "upddatedData": newData
+    });
+}
+
   render() {
     return (
       <div>
         <button onClick={this.onClickHandler}>{this.state.isOn ? "on" : "off"}</button>
         <Header />
-        <Form />
+        <Form
+        value={this.state.search}
+        handleInputChange={this.handleInputChange}
+        handleFormSubmit={this.handleFormSubmit}
+         />
         <Table data={this.state.data} />
       </div>
     )
