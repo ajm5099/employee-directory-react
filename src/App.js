@@ -27,9 +27,9 @@ class App extends React.Component {
   componentDidMount = () => {
     // call the API which will return JSON
     API.search().then(results => {
-      // console.log(results)
+      console.log(results)
       this.setState({ data: results.data.results })
-      // console.log(results.data.results)
+      console.log(results.data.results)
     }).catch(err => {
       console.log(err)
     })
@@ -60,10 +60,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.data.filter(data => this.state.data.includes('j')).map(filteredName => (
+        {this.state.data.filter(data => data.name.first.includes('J')).map(filteredName => (
           <li>
-            {console.log("string", this.state.data)}
-            {filteredName}
+            {/* {console.log("string", this.state.data)} */}
+            {filteredName.name.first}
             
           </li>
         ))}
@@ -75,7 +75,7 @@ class App extends React.Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
-        <Table data={this.state.data} />
+        {/* <Table data={this.state.data} /> */}
       </div>
     )
   }
