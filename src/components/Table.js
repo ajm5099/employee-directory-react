@@ -2,13 +2,9 @@ import React from "react";
 
 function Table(props) {
 
-    return <div>
+// const filterNames = props.data.name.first.filter()
 
-        {/* {props.data.name.filter(name => name.includes('j')).map(filteredName => (
-            <li>
-                {filteredName}
-            </li>
-        ))} */}
+    return <div>
 
         <table class="table">
             <thead>

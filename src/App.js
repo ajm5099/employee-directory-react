@@ -27,9 +27,9 @@ class App extends React.Component {
   componentDidMount = () => {
     // call the API which will return JSON
     API.search().then(results => {
-      console.log(results)
+      // console.log(results)
       this.setState({ data: results.data.results })
-      console.log(results.data.results)
+      // console.log(results.data.results)
     }).catch(err => {
       console.log(err)
     })
@@ -38,7 +38,6 @@ class App extends React.Component {
   onClickHandler = () => {
     this.setState({ isOn: !this.state.isOn })
   }
-
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -56,19 +55,18 @@ class App extends React.Component {
       "upddatedData": newData
     });
   }
-  // {console.log(this.state.data)}
-  const filterNames = this.state.data.filter(this.state => this.state.phone == 1)
-  return filterNames
+
 
   render() {
     return (
       <div>
-        {console.log(filterNames)}
-        {/* {this.state.data.filter(data => this.state.data.includes('j')).map(filteredName => (
+        {this.state.data.filter(data => this.state.data.includes('j')).map(filteredName => (
           <li>
+            {console.log("string", this.state.data)}
             {filteredName}
+            
           </li>
-        ))} */}
+        ))}
 
         <button onClick={this.onClickHandler}>{this.state.isOn ? "on" : "off"}</button>
         <Header />
