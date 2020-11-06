@@ -5,8 +5,8 @@ function Form(props) {
         <form>
             <div className="form-group row">
                 <label for="inputSearch" class="col-sm-2 col-form-label">Search</label>
-                <div className="col-sm-10">
-                    <input type="Text" className="form-control" id="inputSearch" placeholder="Search" />
+                <div className="col-sm-4">
+                    <input type="Text" className="form-control" id="inputSearch" placeholder="Search" onChange={this.filterList} />
                 </div>
             </div>
         </form>
