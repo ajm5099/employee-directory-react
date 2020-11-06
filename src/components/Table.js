@@ -1,27 +1,21 @@
 import React from "react";
-import TableFilter from 'react-table-filter';
 
 function Table(props) {
 
-    // filterlist = event => {
-    //     var updatedData = this.state.backupData;
-    //     updatedData = updatedData.filter(function(data) {
-    //         return (
-    //             data.fullname.toLowerCase().search(event.target.value.toLowerCase()) !==-1
-    //         );
-    //     });
-    //     this.setState({
-    //         list: updatedList
-    //     });
-    // };
-
     return <div>
+
+        {/* {props.data.name.filter(name => name.includes('j')).map(filteredName => (
+            <li>
+                {filteredName}
+            </li>
+        ))} */}
+
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Employee #</th>
                     <th scope="col">Image</th>
-                    <th scope="col" filterkey="name">Name</th>
+                    <th scope="col" >Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">DOB</th>
@@ -40,6 +34,7 @@ function Table(props) {
                             <td>{data.dob.date}</td>
                         </tr>
                     )
+
                 })}
 
                 {/* <tr>

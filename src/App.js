@@ -18,7 +18,7 @@ import Table from "./components/Table";
 // ]
 
 class App extends React.Component {
-  state= {
+  state = {
     isOn: false,
     data: [],
     backupData: []
@@ -39,7 +39,7 @@ class App extends React.Component {
     this.setState({ isOn: !this.state.isOn })
   }
 
-  
+
   handleFormSubmit = event => {
     event.preventDefault();
     this.filterUpdated(this.state.data);
@@ -53,20 +53,30 @@ class App extends React.Component {
 
   filterUpdated = (newData, filterConfiguration) => {
     this.setState({
-        "upddatedData": newData
+      "upddatedData": newData
     });
-}
+  }
+  // {console.log(this.state.data)}
+  const filterNames = this.state.data.filter(this.state => this.state.phone == 1)
+  return filterNames
 
   render() {
     return (
       <div>
+        {console.log(filterNames)}
+        {/* {this.state.data.filter(data => this.state.data.includes('j')).map(filteredName => (
+          <li>
+            {filteredName}
+          </li>
+        ))} */}
+
         <button onClick={this.onClickHandler}>{this.state.isOn ? "on" : "off"}</button>
         <Header />
         <Form
-        value={this.state.search}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-         />
+          value={this.state.search}
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+        />
         <Table data={this.state.data} />
       </div>
     )
