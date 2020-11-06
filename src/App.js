@@ -21,14 +21,15 @@ class App extends React.Component {
   state = {
     isOn: false,
     data: [],
-    backupData: []
+    backupData: [],
+    searchTerm: ""
   }
 
   componentDidMount = () => {
     // call the API which will return JSON
     API.search().then(results => {
       console.log(results)
-      this.setState({ data: results.data.results })
+      this.setState({ data: results.data.results, backupData: results.data.results })
       console.log(results.data.results)
     }).catch(err => {
       console.log(err)
@@ -50,32 +51,49 @@ class App extends React.Component {
     })
   }
 
-  filterUpdated = (newData, filterConfiguration) => {
-    this.setState({
-      "upddatedData": newData
-    });
+  handleInputChange = (e) => {
+    let { value } = e.target
+    value = value.toLowerCase()
+    if (value) {
+      const filtered = this.state.data.filter(user => (user.name.first.toLowerCase().includes(value) || (user.name.last.toLowerCase().includes(value))))
+      this.setState({ data: filtered, searchTerm: value })
+    } else {
+      this.setState({ data: [...this.state.backupData], searchTerm: value })
+    }
+
   }
+
+  // filterUpdated = (newData, filterConfiguration) => {
+  //   this.setState({
+  //     "upddatedData": newData
+  //   });
+  // }
 
 
   render() {
     return (
       <div>
-        {this.state.data.filter(data => data.name.first.includes('J')).map(filteredName => (
+        {/* {this.state.data.filter(data => data.name.first.includes('J')).map(filteredName => (
           <li>
-            {/* {console.log("string", this.state.data)} */}
+            {console.log("string", this.state.data)}
             {filteredName.name.first}
             
           </li>
-        ))}
+        ))} */}
 
         <button onClick={this.onClickHandler}>{this.state.isOn ? "on" : "off"}</button>
         <Header />
-        <Form
+        <input name="testInput" onChange={this.handleInputChange} value={this.state.searchTerm} />
+        {/* <ul>
+          {this.state.data.map(user => <li>{user.name.first} {user.name.last}</li>)}
+
+        </ul> */}
+        {/* <Form
           value={this.state.search}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
-        />
-        {/* <Table data={this.state.data} /> */}
+        /> */}
+        <Table data={this.state.data} />
       </div>
     )
   }
