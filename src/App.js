@@ -60,8 +60,13 @@ class App extends React.Component {
     } else {
       this.setState({ data: [...this.state.backupData], searchTerm: value })
     }
-
   }
+
+  sortNames = (a, b) => {
+    const sortedNames = this.state.data.sort((a, b) => a.this.state.data.user.name.first.localCompare(b.this.state.data.user.name.first));
+    console.log(sortedNames)
+  }
+
 
   // filterUpdated = (newData, filterConfiguration) => {
   //   this.setState({
@@ -73,17 +78,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* {this.state.data.filter(data => data.name.first.includes('J')).map(filteredName => (
-          <li>
-            {console.log("string", this.state.data)}
-            {filteredName.name.first}
-            
-          </li>
-        ))} */}
 
-        <button onClick={this.onClickHandler}>{this.state.isOn ? "on" : "off"}</button>
         <Header />
         <input name="testInput" onChange={this.handleInputChange} value={this.state.searchTerm} />
+
+      <button onclick={this.sortNames}>Push me</button>
+
         {/* <ul>
           {this.state.data.map(user => <li>{user.name.first} {user.name.last}</li>)}
 
