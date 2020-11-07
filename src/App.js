@@ -5,18 +5,6 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Table from "./components/Table";
 
-// let employees = [
-//   {
-//     firstName: "John",
-//     lastName: "Jacob",
-//     phone: "123-456-7890"
-//   },
-//   {
-//     firstName: "andy",
-//     lastName: "malcom"
-//   }
-// ]
-
 class App extends React.Component {
   state = {
     isOn: false,
@@ -26,7 +14,6 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    // call the API which will return JSON
     API.search().then(results => {
       console.log(results)
       this.setState({ data: results.data.results, backupData: results.data.results })
@@ -74,6 +61,10 @@ class App extends React.Component {
   //   });
   // }
 
+  buttonPress = () => {
+    console.log("Pressed the button")
+  }
+
 
   render() {
     return (
@@ -82,17 +73,8 @@ class App extends React.Component {
         <Header />
         <input name="testInput" onChange={this.handleInputChange} value={this.state.searchTerm} />
 
-      <button onclick={this.sortNames}>Push me</button>
+      <button onclick={this.buttonPress}>Push me</button>
 
-        {/* <ul>
-          {this.state.data.map(user => <li>{user.name.first} {user.name.last}</li>)}
-
-        </ul> */}
-        {/* <Form
-          value={this.state.search}
-          handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit}
-        /> */}
         <Table data={this.state.data} />
       </div>
     )
