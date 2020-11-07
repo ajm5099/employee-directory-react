@@ -50,33 +50,38 @@ class App extends React.Component {
   }
 
   sortNames = (a, b) => {
-    const sortedNames = this.state.data.sort((a, b) => a.this.state.data.user.name.first.localCompare(b.this.state.data.user.name.first));
-    console.log(sortedNames)
-  }
+    const sortedNames = this.sort((a, b) => {
+      if (a.user.name.first > b.user.name.first) {
+        return 1;
+      }
+      if (a.user.name.first < b.user.name.first) {
+        return -1;
+      }
+      return 0;
+    }
+    )}
 
-
-  // filterUpdated = (newData, filterConfiguration) => {
-  //   this.setState({
-  //     "upddatedData": newData
-  //   });
-  // }
 
   buttonPress = () => {
-    console.log("Pressed the button")
-  }
+        console.log("Pressed the button")
+      }
+
+  // compareNames = (a, b) => {
+  //   const 
+  // }
 
 
   render() {
-    return (
+      return(
       <div>
 
         <Header />
         <input name="testInput" onChange={this.handleInputChange} value={this.state.searchTerm} />
 
-      <button onclick={this.buttonPress}>Push me</button>
+      <button className="btn btn-primary" onclick={this.sortNames}>Push me</button>
 
         <Table data={this.state.data} />
-      </div>
+      </div >
     )
   }
 }
