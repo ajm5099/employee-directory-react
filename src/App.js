@@ -49,36 +49,50 @@ class App extends React.Component {
     }
   }
 
-  sortNames = (a, b) => {
-    const sortedNames = this.sort((a, b) => {
-      if (a.user.name.first > b.user.name.first) {
+  // sortNames = (a, b) => {
+  //   const sortedNames = data.sort((a, b) => {
+  //     if (a.user.name.first > b.user.name.first) {
+  //       return 1;
+  //     }
+  //     if (a.user.name.first < b.user.name.first) {
+  //       return -1;
+  //     }
+  //     return 0;
+  //   }
+  //   )}
+
+  // no parameters needed here  
+  sortNames = () => {
+    // get the current employees ( probably this.state.data )
+    const sortedNames = this.state.data.sort((a, b) => {
+      if (a.name.first > b.name.first) {
         return 1;
       }
-      if (a.user.name.first < b.user.name.first) {
+      if (a.name.first < b.name.first) {
         return -1;
       }
       return 0;
-    }
-    )}
-
+    })
+    this.setState(prevState => ({
+      ...prevState,
+      data: sortedNames
+    }))
+  }
 
   buttonPress = () => {
-        console.log("Pressed the button")
-      }
-
-  // compareNames = (a, b) => {
-  //   const 
-  // }
+    this.sortNames()
+    console.log(this.state.data)
+  }
 
 
   render() {
-      return(
+    return (
       <div>
 
         <Header />
         <input name="testInput" onChange={this.handleInputChange} value={this.state.searchTerm} />
 
-      <button className="btn btn-primary" onclick={this.sortNames}>Push me</button>
+        <button className="btn btn-primary" onClick={this.buttonPress}>Push me</button>
 
         <Table data={this.state.data} />
       </div >
