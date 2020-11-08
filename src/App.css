@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.searchArea {
+  margin-top: 5vh;
+  background: salmon;
+  margin-bottom: 5vh;
+}
+
+.tableArea {
+  margin: 5vw;
+}
+
+#filterBtn {
+  margin: 5vw;
+}
